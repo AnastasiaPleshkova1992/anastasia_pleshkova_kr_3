@@ -20,3 +20,10 @@ def mask_card_number(card_number):
     masked_number = '{} {}** **** {}'.format(card_number[:-12], card_number[-10:-8], card_number[-4:])
     return masked_number
 
+
+def mask_amount_number(amount_number):
+    """Получает замаскированный вид счета
+    """
+    masked_amount = 'Счет **{}'.format(amount_number[-4:])
+    return masked_amount
+
