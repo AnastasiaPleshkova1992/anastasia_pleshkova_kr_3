@@ -27,3 +27,19 @@ def mask_amount_number(amount_number):
     masked_amount = 'Счет **{}'.format(amount_number[-4:])
     return masked_amount
 
+
+def get_last_five_operations():
+    """Получает пять последних успешных операций
+    """
+    with open(OPERATION_PATH, encoding='UTF-8') as file:
+        operations = json.load(file)
+        executed_operations = []
+        for operation in operations:
+            if operation == {}:
+                continue
+            if operation["state"] == "EXECUTED":
+                executed_operations.append(operation)
+        sorted_operations = sorted(executed_operations, key=lambda x: x['date'], reverse=True)
+        last_five_operations = sorted_operations[:5]
+        return last_five_operations
+
