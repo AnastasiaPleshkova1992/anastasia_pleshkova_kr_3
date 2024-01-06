@@ -13,3 +13,10 @@ def format_date(date):
     formatted_date = '{}.{}.{}'.format(formatted_date[2], formatted_date[1], formatted_date[0])
     return formatted_date
 
+
+def mask_card_number(card_number):
+    """Получает замаскированный номер карты
+    """
+    masked_number = '{} {}** **** {}'.format(card_number[:-12], card_number[-10:-8], card_number[-4:])
+    return masked_number
+
